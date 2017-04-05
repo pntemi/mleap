@@ -1,3 +1,0 @@
-[submodule "bundle-protobuf"]
-	path = bundle-protobuf
-	url = https://github.com/combust/bundle-protobuf.git

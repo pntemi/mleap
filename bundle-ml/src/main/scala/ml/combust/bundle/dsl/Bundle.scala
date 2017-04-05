@@ -3,7 +3,7 @@ package ml.combust.bundle.dsl
 import java.nio.file.{FileSystem, Path}
 import java.util.UUID
 
-import ml.combust.mleap.BuildValues
+import ml.combust.mleap.BuildInfo
 import ml.combust.bundle.{BundleContext, BundleRegistry}
 import ml.combust.bundle.serializer._
 

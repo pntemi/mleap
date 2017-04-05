@@ -6,20 +6,21 @@ import sbt._
 object MleapProject {
   lazy val aggregatedProjects: Seq[ProjectReference] = {
     val base: Seq[ProjectReference] = Seq(baseProject,
-      tensor,
+//      tensor,
       bundleMl,
       core,
       runtime,
       avro,
       sparkBase,
-      sparkTestkit,
+//      sparkTestkit,
       spark,
       sparkExtension)
 
-    sys.props.get("mleap.tensorflow.enabled") match {
-      case Some("true") => base :+ (tensorflow: ProjectReference)
-      case _ => base
-    }
+//    sys.props.get("mleap.tensorflow.enabled") match {
+//      case Some("true") => base :+ (tensorflow: ProjectReference)
+//      case _ => base
+//    }
+    base
   }
 
   lazy val rootSettings = Release.settings ++ Common.buildSettings ++ Common.sonatypeSettings ++ Seq(publishArtifact := false)
@@ -35,22 +36,22 @@ object MleapProject {
     base = file("mleap-base")
   )
 
-  lazy val tensor = Project(
-    id = "mleap-tensor",
-    base = file("mleap-tensor"),
-    dependencies = Seq(baseProject)
-  )
+//  lazy val tensor = Project(
+//    id = "mleap-tensor",
+//    base = file("mleap-tensor"),
+//    dependencies = Seq(baseProject)
+//  )
 
   lazy val bundleMl = Project(
     id = "bundle-ml",
     base = file("bundle-ml"),
-    dependencies = Seq(baseProject, tensor)
+    dependencies = Seq(baseProject)
   )
 
   lazy val core = Project(
     id = "mleap-core",
     base = file("mleap-core"),
-    dependencies = Seq(baseProject, tensor)
+    dependencies = Seq(baseProject)
   )
 
   lazy val runtime = Project(
@@ -89,11 +90,11 @@ object MleapProject {
     dependencies = Seq(spark, sparkTestkit % "test")
   )
 
-  lazy val tensorflow = Project(
-    id = "mleap-tensorflow",
-    base = file("mleap-tensorflow"),
-    dependencies = Seq(runtime)
-  )
+//  lazy val tensorflow = Project(
+//    id = "mleap-tensorflow",
+//    base = file("mleap-tensorflow"),
+//    dependencies = Seq(runtime)
+//  )
 
   lazy val serving = Project(
     id = "mleap-serving",

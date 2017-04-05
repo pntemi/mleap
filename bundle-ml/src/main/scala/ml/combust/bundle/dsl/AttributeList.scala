@@ -141,7 +141,7 @@ object AttributeList {
   *
   * @param lookup map of attribute name to [[Attribute]] object
   */
-case class AttributeList(lookup: Map[String, Attribute]) {
+case class  AttributeList(lookup: Map[String, Attribute]) {
   /* make sure the list is not empty */
   require(lookup.nonEmpty, "attribute list cannot be empty")
 
